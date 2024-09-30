@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: "Helvetica";
+        }
+        
+        .prediction-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100px;
+            height: 50px;
+            padding: 5px;
+            background-color: grey;
+        }
+
+        .prediction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .positive {
+            color:red;
+        }
+        .negative {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Skin Cancer Prediction App</h1>
+    <div class="prediction-form" >
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file", id="image", name="image">
+            <input type="submit">
+        </form>
+    </div>
+
+    {% if prediction == 0 %}
+    <h1 class="prediction negative">
+        Congratulations you don't have skin cancer.
+    </h1>
+    {% else %}
+    <h1 class="prediction positive">
+        We have detected symptoms of skin cancer, please get yourself checked by a dermatologist as soon as possible.
+    </h1>
+    {% endif %}
+</body>
+</html>
