@@ -3,3 +3,4 @@ pydantic
 tensorflow
 numpy
 uvicorn
+pillow
