@@ -20,7 +20,12 @@ def index(request:Request):
 def predict(request:Request, image: UploadFile):
 
     res = make_prediction(image.file.read())
-    
+
     return templates.TemplateResponse(
         request=request, name="prediction.html", context={"prediction": int(res)}
     )
+
+@app.post('/api/predict', response_model=PredictionResponse)
+def api_predict(image: UploadFile):
+    res = make_prediction(image.file.read())
+    return {"prediction": res}
