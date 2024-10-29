@@ -10,5 +10,6 @@ def make_prediction(image: bytes):
     X = np.array([np.array(img)])
     model = keras.models.load_model(config.MODEL_PATH)
     prediction = model.predict(X)
-    res = prediction[0][0]
+    print(prediction[0][0])
+    res = prediction[0][0]>0.05
     return res
